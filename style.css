@@ -1,0 +1,1240 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+/* FORCE FOOTER TO STAY AT BOTTOM */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto !important;
+}
+
+:root{
+  --bg:#F7F9F5;
+  --text: #0B3D2E;
+  --muted: #4F7F53;
+  --header-height: 72px;
+  --green-600: #0B3D2E;
+  --green-500: #4F7F53;
+  --green-300: #E6D8C3;
+  --accent:#7A5E42;
+  --card-bg:#ffffff;
+  --shadow:  rgba(11, 61, 46, 0.15);
+  --radius: 12px;
+  --max-width: 1200px;
+  --gap: 24px;
+  --fluid-padding: 4vw;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #333;
+}
+
+/* HEADER — TRANSPARENT, FIXED, FLOATING ON TOP */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 12px 0; /* reduce vertical padding for consistent header height */
+  z-index: 1000;
+  background: transparent;
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header img {
+  height: 150px;
+}
+
+/* NAVIGATION */
+.header-nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header-nav a:hover {
+  opacity: 0.7;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 500vh;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  color: white;
+  width: 90%;
+  max-width: 900px;
+}
+
+.hero-logo {
+  width: 300px;
+  margin-bottom: 300x;
+}
+
+.hero h1 {
+  font-size: 100px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* SEARCH BOX */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+  outline: none;
+}
+
+.search-box button {
+  background: #6BCB3D;
+  border: none;
+  color: rgb(19, 119, 31);
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #266a09;
+}
+
+.explore-link {
+  display: block;
+  margin-top: 18px;
+  color: white;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+/* TOP TRAILS SECTION */
+.top-trails {
+  padding: 60px 30px;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.top-trails h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.trail-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.trail-card {
+  background: white;
+  width: 260px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.trail-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.trail-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* FOOTER */
+.footer {
+  background: #222;
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.footer-nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   RESET / BASE
+=========================== */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-size:16px;
+}
+
+/* make room for fixed header so it doesn't overlap page content */
+body {
+  padding-top: var(--header-height);
+}
+
+/* Homepage overrides: let hero extend to the very top and remove green header */
+body.home {
+  padding-top: 0; /* allow hero to reach the top */
+}
+
+body.home header {
+  background: transparent; /* remove translucent green */
+  box-shadow: none;        /* remove shadow so hero shows through */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+}
+
+/* Ensure header links stay readable over the hero image */
+body.home .nav-container a,
+body.home .header-nav a {
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* Trails page: ensure the 'Choose Your Trail Type' heading is white for contrast */
+body.trails .categories h2 {
+  color: #ffffff;
+}
+
+/* Difficulty page: make the heading and explanatory text white for contrast */
+body.difficulty .categories h2,
+body.difficulty .categories p {
+  color: #ffffff;
+}
+
+/* Trails-list page: make the trail list title white for contrast */
+body.trails-list #trailListTitle,
+body.trails-list .categories h2 {
+  color: #ffffff;
+}
+
+/* Shop-specific header polish: solid, clean, with improved spacing */
+body.shop header {
+  background: linear-gradient(180deg, var(--green-600), #145a2a);
+  box-shadow: 0 6px 20px rgba(11,61,46,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(3px);
+}
+
+body.shop .header-container {
+  height: var(--header-height);
+  align-items: center;
+}
+
+/* Shop logo: match homepage circular logo (size, border, shadow) */
+body.shop .logo-left img,
+.logo-left img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  background: #ffffff18;
+  backdrop-filter: blur(4px);
+}
+
+/* Nav link style for shop page */
+body.shop .nav-container a {
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+body.shop .nav-container a:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* utility */
+.container {
+  width: min(var(--max-width), calc(100% - 2*var(--fluid-padding)));
+  margin: 0 auto;
+  padding: 0 var(--fluid-padding);
+}
+
+/* links */
+a { color:inherit; text-decoration:none; }
+a:focus { outline: 3px solid color-mix(in srgb, var(--accent) 20%, transparent); outline-offset: 3px; }
+
+/* ===========================
+   HEADER / NAV
+=========================== */
+header {
+  /* translucent green header so underlying page can be seen */
+  background: rgba(11,61,46,0.58);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(11,61,46,0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.container-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  height:72px;
+  width: min(var(--max-width), calc(100% - 2*var(--fluid-padding)));
+  margin:0 auto;
+  padding: 0 var(--fluid-padding);
+}
+
+.header-logo {
+  height:48px;
+  width: 50px;;
+  display:block;
+  object-fit:contain;
+}
+
+.header-nav {
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.header-nav a {
+  color:#fff;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  transition: background .18s, color .18s, transform .12s;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);  
+}
+
+@media (max-width:640px){
+  .container-header { height:64px; gap:8px; }
+  .header-nav { gap:10px; font-size:15px; }
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  min-height: 60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  color:#fff;
+  /* Restored original hero background (photo with dark overlay) */
+  /* Subtle green-tinted overlay + fallback color so the photo reads clearer */
+  background:
+    linear-gradient(180deg, rgba(11,61,46,0.18), rgba(0,0,0,0.08)),
+    url("hero.jpg") center/cover no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #0b3d2e; /* fallback if image missing */
+  padding: clamp(40px, 7vw, 80px) 0;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  width: min(900px, 94%);
+  margin-inline:auto;
+}
+
+.hero-logo {
+  height:200px;
+  margin-bottom:5px;
+  display:inline-block;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4.2vw, 48px);
+  margin: 0 0 12px;
+  letter-spacing: 0.2px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  font-weight:700;
+}
+
+.hero p {
+  font-size: clamp(15px, 1.6vw, 18px);
+  margin-bottom:16px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.35);
+}
+
+/* search */
+.search-box {
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.search-box input[type="text"] {
+  min-width: 240px;
+  width: 420px;
+  max-width: 85vw;
+  padding:12px 16px;
+  border-radius: 999px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  font-size: 15px;
+  outline: none;
+}
+
+.search-box button {
+  padding:12px 20px;
+  border-radius:999px;
+  border:none;
+  background: linear-gradient(180deg,var(--accent), var(--green-600));
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform .12s, filter .12s;
+}
+
+.search-box button:hover { transform: translateY(-2px); filter:brightness(0.98); }
+
+/* TOP TRAILS NEARBY SECTION */
+.top-trails {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.top-trails h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.trail-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trail-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.trail-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.trail-card h3 {
+  font-size: 1.2rem;
+  margin: 15px 0 5px;
+  color: #2c3e50;
+}
+
+.trail-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* ===========================
+   CATEGORIES / CARDS
+=========================== */
+.categories {
+  padding: clamp(28px, 5vw, 60px) 0;
+  background: transparent;
+}
+
+.categories h2 {
+  font-size: clamp(22px, 3.2vw, 36px);
+  color:var(--green-600);
+  margin-bottom:8px;
+  font-weight:700;
+  text-align:center;
+}
+
+.categories p { color:var(--muted); margin-bottom:18px; text-align:center; }
+
+.category-cards {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap);
+  align-items:start;
+  margin-top: 14px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 22px var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease;
+  display:flex;
+  flex-direction:column;
+  min-height: 320px;
+}
+
+.card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+
+.card img {
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+  display:block;
+}
+
+.card > h3 {
+  margin:14px 16px 6px;
+  color:var(--green-600);
+  font-size:18px;
+}
+
+.card > p {
+  margin:0 16px 16px;
+  color:var(--muted);
+  flex:1 0 auto;
+}
+
+.card .card-action {
+  padding: 12px 16px 18px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+/* ===========================
+   DIFFICULTY BUTTONS
+=========================== */
+.difficulty-buttons {
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.btn-secondary {
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:10px;
+  background: var(--card-bg);
+  border: 2px solid var(--green-500);
+  color: var(--green-600);
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: background .14s, color .14s, transform .12s;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: var(--green-500);
+  color:#fff;
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   TRAIL LIST (MODIFIED HERE)
+=========================== */
+.trail-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap);
+  margin-top: 24px;
+}
+
+.trail-item {
+  background:var(--card-bg);
+  border-radius: var(--radius);
+  overflow:hidden;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+  padding: 12px;
+  transition: transform .16s, box-shadow .16s;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* ⭐ NEW IMAGE BOX */
+.trail-img-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ⭐ UPDATED IMAGE STYLE */
+.trail-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* trail text */
+.trail-item h3 { margin:2px 0 4px; color:var(--green-600); font-size:18px; }
+.trail-item p { margin:0; color:var(--muted); font-size:14px; }
+
+.trail-meta { display:flex; gap:10px; color:var(--muted); font-size:13px; align-items:center; }
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background: linear-gradient(180deg,#1b5e20, #184f1b);
+  color:#fff;
+  padding:18px 0;
+  margin-top:40px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* ===========================
+   SMALL SCREENS
+=========================== */
+@media (max-width:900px){
+  .hero { min-height: 48vh; padding: clamp(28px, 6vw, 48px) 0; }
+  .hero-logo { height:84px; }
+  .card { min-height: auto; }
+}
+
+@media (max-width:640px){
+  .container-header { flex-direction:row; gap:10px; padding: 0 16px; }
+  .header-nav { gap:10px; font-size:15px; flex-wrap:wrap; justify-content:flex-end; }
+  .hero h1 { font-size:22px; }
+  .search-box input { width: 92vw; }
+  .category-cards { gap:16px; grid-template-columns: repeat(1, 1fr); }
+  .difficulty-buttons { gap:12px; flex-direction:column; align-items:stretch; }
+  .btn-secondary { width:100%; text-align:center; }
+  .trail-list { grid-template-columns: 1fr; gap:16px; }
+}
+
+/* ===========================
+   Accessibility helpers
+=========================== */
+.sr-only {
+  position:absolute !important;
+  width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+/* Trail card container */
+.trail-item {
+  width: 320px;          /* size of the box */
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  margin: 20px auto;
+}
+
+/* Image container box */
+.trail-img {
+  width: 100%;
+  height: 220px;        /* fixed height box */
+  object-fit: cover;    /* THIS makes the image scale perfectly */
+  border-radius: 10px;
+}
+/* ========== IMAGE LIGHTBOX ========== */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #000;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Horizontal scrolling image gallery */
+.trail-img-scroll {
+  width: 100%;
+  height: 200px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.trail-img-scroll img {
+  height: 100%;
+  width: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+/* ====== IMAGE CAROUSEL ====== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  color: white;
+  border: none;
+  font-size: 32px;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.left-btn { left: 10px; }
+.right-btn { right: 10px; }
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* ====== IMAGE POPUP ====== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 5%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+/* Bigger trail container */
+.trail-item {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* Larger image area */
+.carousel-container {
+  height: 300px !important; /* Increased from 220px */
+  border-radius: 14px;
+}
+
+/* Description styling */
+.description-box {
+  margin: 12px 0 18px;
+  padding: 12px;
+  background: #f7f7f7;
+  border-left: 4px solid #4CAF50;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+/* --- FIX IMAGE MODAL SIZE & ARROW POSITIONING --- */
+
+.image-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Image container inside modal */
+.modal-image-container {
+  position: relative;
+  width: 100%;
+  height: 420px; /* <- bigger container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* The image itself */
+#modalImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Arrows */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 12px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+  z-index: 10;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Left arrow */
+.modal-prev {
+  left: 15px;
+}
+
+/* Right arrow */
+.modal-next {
+  right: 15px;
+}
+
+/* Description area */
+#modalDescription {
+  margin-top: 18px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.5;
+}
+/* --- REQUIRED MODAL WRAPPER (MISSING IN YOUR CSS) --- */
+
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+/* ============================= */
+/* SMALL CARD IMAGE CAROUSEL ONLY */
+/* ============================= */
+.trail-item .carousel-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.trail-item .carousel-container .prev-btn,
+.trail-item .carousel-container .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.trail-item .carousel-container .prev-btn { left: 10px; }
+.trail-item .carousel-container .next-btn { right: 10px; }
+
+
+
+/* ============================= */
+/* POPUP (MODAL) CAROUSEL ARROWS */
+/* ============================= */
+.trail-modal .modal-prev,
+.trail-modal .modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.trail-modal .modal-prev { left: 20px; }
+.trail-modal .modal-next { right: 20px; }
+/* ============================================
+   FIXED POPUP STYLES (MATCH YOUR HTML)
+   ============================================ */
+
+.image-popup {
+  display: none;                 /* Hidden until clicked */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.popup-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  object-fit: contain;
+}
+
+.popup-close {
+  position: fixed;
+  top: 25px;
+  right: 35px;
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 100000;
+  transition: 0.2s;
+}
+
+.popup-close:hover {
+  color: #cccccc;
+}
+/* Small logo beside title */
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-mini-logo {
+  width: 40px;
+  height: auto;
+}
+
+/* Shared nav pill (homepage look) */
+.nav-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 10px 22px;
+  border-radius: 40px;          /* Oblong shape */
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* header nav list layout (shared) */
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Header actions (cart etc) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart-btn svg { width: 20px; height: 20px; }
+
+.cart-badge {
+  position: relative;
+  left: -14px;
+  top: -22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:18px;
+  height:18px;
+  padding:2px 4px;
+  border-radius: 999px;
+  background: #ff6b6b;
+  color: #fff;
+  font-size: 12px;
+  font-weight:700;
+}
+
+/* Maintain older .header-nav utility for other pages */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float {
+  display: inline-block;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.7s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: scale(0);
+  animation: ripple-effect 0.5s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+/* =========================================================
+   ★ WOW LEVEL B — ANIMATION STYLES
+========================================================= */
+
+/* ---- Fade-up & slide reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  transition: all 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ---- Stagger Reveal ---- */
+.stagger-reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: staggerIn 0.8s ease forwards;
+}
+
+@keyframes staggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Breathing Glow (logo) ---- */
+.breathing {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+  transform: scale(1.03);
+  transition: all 0.8s ease;
+}
+
+/* ---- Leaf particle drift ---- */
+.leaf {
+  position: absolute;
+  top: -30px;
+  width: 14px;
+  height: 14px;
+  background: rgba(23, 179, 78, 0.35);
+  border-radius: 3px;
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: leafFall linear infinite;
+}
+
+@keyframes leafFall {
+  to {
+    transform: translateY(120vh) rotate(160deg);
+    opacity: 0;
+  }
+}
+
+/* ---- Button Ripple ---- */
+.ripple {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleAnim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: translate(-50%, -50%) scale(2.6);
+    opacity: 0;
+  }
+}

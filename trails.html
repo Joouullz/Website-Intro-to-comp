@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Trail Type</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="animations.js"></script>
+
+  <style>
+    /* Base: nature green theme */
+  :root {
+    --green-900: #072617;
+    --green-800: #0b3d2e;
+    --green-700: #1e5238;
+    --accent: #81c784;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--green-800) 0%, var(--green-700) 100%);
+    color: #ffffff;
+  }
+/* Fix header to match the other pages */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
+    /* Restored green translucent header (same as other pages) */
+    background: rgba(11,61,46,0.58);
+    box-shadow: 0 2px 10px rgba(11,61,46,0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+
+    /* Dropdown container */
+    .difficulty-dropdown {
+      position: relative;
+      width: 100%;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Main difficulty button */
+    .difficulty-toggle {
+      background: var(--card-bg);
+      border: 2px solid var(--green-500);
+      color: var(--green-600);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 80%;
+      text-align: center;
+    }
+
+    .difficulty-toggle:hover {
+      background: var(--green-500);
+      color: white;
+    }
+
+    /* Hidden panel for options */
+    .difficulty-options {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    /* Show class */
+    .dropdown-show {
+      display: flex !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="trails">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">  
+    <div class="logo-left">
+      <img src="logo-btm.png" alt="Bukidnon Trail Masters Logo">
+      <h1>Find your outside</h1>
+    </div>
+
+    <nav>
+      <ul class="nav-container">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- Trail Selection Section -->
+<section class="categories">
+  <h2>Choose Your Trail Type</h2>
+  <div class="category-cards">
+
+    <!-- RUNNING -->
+    <div class="card" data-category="Running">
+      <img src="running.jpg" alt="Running on mountain trail">
+      <h3>Running</h3>
+      <p>Find the best running trails in your area.</p>
+
+      <!-- DROPDOWN -->
+      <div class="difficulty-dropdown">
+        <button class="difficulty-toggle">Difficulty ▼</button>
+
+        <div class="difficulty-options">
+          <a href="trails-list.html?category=Running&difficulty=easy" class="btn-secondary">Beginner</a>
+          <a href="trails-list.html?category=Running&difficulty=intermediate" class="btn-secondary">Intermediate</a>
+          <a href="trails-list.html?category=Running&difficulty=extreme" class="btn-secondary">Extreme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIKING -->
+    <div class="card" data-category="Hiking">
+      <img src="hiking.jpg" alt="People hiking a mountain trail">
+      <h3>Hiking</h3>
+      <p>Discover scenic hiking routes for all skill levels.</p>
+
+      <div class="difficulty-dropdown">
+        <button class="difficulty-toggle">Difficulty ▼</button>
+
+        <div class="difficulty-options">
+          <a href="trails-list.html?category=Hiking&difficulty=easy" class="btn-secondary">Beginner</a>
+          <a href="trails-list.html?category=Hiking&difficulty=intermediate" class="btn-secondary">Intermediate</a>
+          <a href="trails-list.html?category=Hiking&difficulty=extreme" class="btn-secondary">Extreme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WALKING -->
+    <div class="card" data-category="Walking">
+      <img src="walking.jpg" alt="People walking on a green trail">
+      <h3>Walking</h3>
+      <p>Enjoy relaxing walking trails close to home.</p>
+
+      <div class="difficulty-dropdown">
+        <button class="difficulty-toggle">Difficulty ▼</button>
+
+        <div class="difficulty-options">
+          <a href="trails-list.html?category=Walking&difficulty=easy" class="btn-secondary">Beginner</a>
+          <a href="trails-list.html?category=Walking&difficulty=intermediate" class="btn-secondary">Intermediate</a>
+          <a href="trails-list.html?category=Walking&difficulty=extreme" class="btn-secondary">Extreme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAMPING -->
+    <div class="card" data-category="Camping">
+      <img src="camping.jpg" alt="Campers setting up a tent on a mountain top">
+      <h3>Camping</h3>
+      <p>Find the best camping spots and outdoor adventures.</p>
+
+      <div class="difficulty-dropdown">
+        <button class="difficulty-toggle">Difficulty ▼</button>
+
+        <div class="difficulty-options">
+          <a href="trails-list.html?category=Camping&difficulty=easy" class="btn-secondary">Beginner</a>
+          <a href="trails-list.html?category=Camping&difficulty=intermediate" class="btn-secondary">Intermediate</a>
+          <a href="trails-list.html?category=Camping&difficulty=extreme" class="btn-secondary">Extreme</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Trail Explorer. All rights reserved.</p>
+</footer>
+
+<script>
+  // Toggle dropdown for each card
+  document.querySelectorAll(".difficulty-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const options = btn.nextElementSibling;
+      options.classList.toggle("dropdown-show");
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bukidnon Trail Masters</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="animations.js"></script>
+</head>
+<style>
+  /* Base: nature green theme */
+  :root {
+    --green-900: #072617;
+    --green-800: #0b3d2e;
+    --green-700: #1e5238;
+    --accent: #81c784;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--green-800) 0%, var(--green-700) 100%);
+    color: #ffffff;
+  }
+  /* NAVIGATION OBLONG GLASS BACKGROUND */
+.nav-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 25px;
+    border-radius: 40px;          /* Oblong shape */
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex;
+    gap: 35px;
+}
+/* Align the nav on the right */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: transparent !important;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header nav ul li a {
+    color: white !important;
+    font-weight: 600;
+}
+
+/* Left circular profile-style logo */
+.logo-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-left img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    background: #ffffff18;
+    backdrop-filter: blur(4px);
+}
+
+
+
+
+</style>
+<body class="home">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">  
+    <div class="logo-left">
+    <img src="logo-btm.png" alt="Bukidnon Trail Masters Logo">
+    <h1>Find your outside</h1>
+</div>
+
+    <nav>
+    <ul class="nav-container">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="logo-btm.png" class="hero-logo" alt="Bukidnon Trail Masters">
+
+    <h1>Discover Trails Near You</h1>
+
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+      <input type="text" placeholder="Search by city, park, or trail name">
+      <button>Search</button>
+    </div>
+
+    <a href="trails.html" class="explore-link">Explore nearby trails</a>
+  </div>
+</section>
+<!-- TOP TRAILS NEARBY -->
+<section class="top-trails">
+  <h2>Top Trails Nearby</h2>
+  <div class="trail-cards">
+
+    <!-- Trail 1 -->
+    <div class="trail-card">
+      <img src="image1.jpg" alt="Mt. Kitanglad Trail">
+      <h3>Mt. Kitanglad</h3>
+      <p>📍 Manila, Philippines</p>
+      <p>⭐ 4.7 · Moderate · 11.6 km · 2.5–3 hr</p>
+    </div>
+
+    <!-- Trail 2 -->
+    <div class="trail-card">
+      <img src="image2.jpg" alt="Big Rock Trail">
+      <h3>Big Rock Trail</h3>
+      <p>📍 Makati, Metro Manila</p>
+      <p>⭐ 4.0 · Easy · 0.6 km · 0.5–1 hr</p>
+    </div>
+
+    <!-- Trail 3 -->
+    <div class="trail-card">
+      <img src="image3.jpg" alt="Sabangan Campsite">
+      <h3>Sabangan Campsite</h3>
+      <p>📍 Manila, Philippines</p>
+      <p>⭐ 4.2 · Easy · 1.8 km · 0.5–1 hr</p>
+    </div>
+
+    <!-- Trail 4 -->
+    <div class="trail-card">
+      <img src="image4.webp" alt="Communal Ranch Trail">
+      <h3>Communal Ranch</h3>
+      <p>📍 Manila, Philippines</p>
+      <p>⭐ 4.3 · Easy · 2.4 km · 0.5–1 hr</p>
+    </div>
+
+
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <p>&copy; 2025 Bukidnon Trail Masters. All rights reserved.</p>
+    <nav class="footer-nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

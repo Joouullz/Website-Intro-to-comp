@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trail List</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="animations.js"></script>
+</head>
+<style>
+/* Base: nature green theme */
+  :root {
+    --green-900: #072617;
+    --green-800: #0b3d2e;
+    --green-700: #1e5238;
+    --accent: #81c784;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--green-800) 0%, var(--green-700) 100%);
+    color: #ffffff;
+  }
+  /* NAVIGATION OBLONG GLASS BACKGROUND */
+.nav-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 25px;
+    border-radius: 40px;          /* Oblong shape */
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex;
+    gap: 35px;
+}
+/* Align the nav on the right */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: transparent !important;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header nav ul li a {
+    color: white !important;
+    font-weight: 600;
+}
+
+/* Left circular profile-style logo */
+.logo-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-left img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    background: #ffffff18;
+    backdrop-filter: blur(4px);
+}
+
+
+
+
+</style>
+<body class="trails-list">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">  
+    <div class="logo-left">
+    <img src="logo-btm.png" alt="Bukidnon Trail Masters Logo">
+    <h1>Find your outside</h1>
+</div>
+
+    <nav>
+    <ul class="nav-container">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trails.html">Trails</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+  </div>
+</header>
+
+<!-- Trail List Section -->
+<section class="categories">
+  <h2 id="trailListTitle">Trails</h2>
+  <div class="trail-list" id="trailListContainer"></div>
+</section>
+
+<!-- FULLSCREEN POPUP -->
+<div id="imagePopup" class="image-popup">
+  <span id="popupClose" class="popup-close">&times;</span>
+  <img id="popupImg" class="popup-img" src="">
+</div>
+
+<script>
+// =============== TRAIL DATA ==================
+const allTrails = [
+
+// Running
+{
+  category: "Running",
+  difficulty: "easy",
+  name: "Morning Park Run",
+  location: "Central Park",
+  distance: 3,
+  rating: 4.5,
+  images: ["Running easy.jpg"],
+  description:
+    "A refreshing early-morning route with cool air and open pathways. Ideal for beginners wanting a smooth and relaxing run surrounded by greenery."
+},
+
+{
+  category: "Running",
+  difficulty: "intermediate",
+  name: "Riverbank Sprint",
+  location: "Riverbank Trail",
+  distance: 5,
+  rating: 4.7,
+  images: ["Running intermediate.jpg"],
+  description:
+    "A scenic riverside route featuring gentle slopes and breezy open views. Great for runners building stamina and improving speed."
+},
+
+{
+  category: "Running",
+  difficulty: "extreme",
+  name: "Mountain Dash",
+  location: "Rocky Hills",
+  distance: 10,
+  rating: 4.9,
+  images: ["Running extreme.jpg"],
+  description:
+    "A challenging uphill run with steep sections and rugged terrain. Made for advanced runners seeking a tough workout with rewarding mountain scenery."
+},
+
+// Hiking - Easy
+{
+  category: "Hiking",
+  difficulty: "easy",
+  name: "Sunny Forest Walk",
+  location: "Greenwood Park",
+  distance: 4,
+  rating: 4.4,
+  images: ["Hiking easy.jpg"],
+  description:
+    "A light forest trail with open sunlight, soft dirt paths, and relaxing natural views. Perfect for beginners or families wanting a calm nature experience."
+},
+
+// Hiking - Intermediate (Mount Capistrano)
+{
+  category: "Hiking",
+  difficulty: "intermediate",
+  name: "Mount Capistrano",
+  location: "Bukidnon, Philippines",
+  distance: 2.3,
+  rating: 4.7,
+  images: ["image1.jpg", "image1.1.jpg"],
+  description:
+    "A popular Bukidnon mountain known for its sunrise views, rocky formations, and panoramic overlooks. The steep, scrambling paths make it ideal for intermediate hikers."
+},
+
+// Hiking - Intermediate (Big Rock Trail)
+{
+  category: "Hiking",
+  difficulty: "intermediate",
+  name: "Big Rock Trail",
+  location: "Can-ayan, Malaybalay City",
+  distance: 3,
+  rating: 4.6,
+  images: ["image2.jpg", "image2.2.jpg"],
+  description:
+    "Named after its huge boulder landmark, this trail features forest paths, uneven ground, and scenic views of Malaybalay. A fun challenge for mid-level hikers."
+},
+
+// Hiking - Extreme
+{
+  category: "Hiking",
+  difficulty: "extreme",
+  name: "Peak Challenge",
+  location: "Summit Ridge",
+  distance: 12,
+  rating: 4.9,
+  images: ["Hiking extreme.jpg"],
+  description:
+    "A demanding route with steep ascents and rugged cliffs. Designed for experienced hikers who want a high-intensity climb with dramatic summit views."
+},
+
+// Walking
+{
+  category: "Walking",
+  difficulty: "easy",
+  name: "Lakeside Stroll",
+  location: "Lakeview Park",
+  distance: 2,
+  rating: 4.3,
+  images: ["Walking easy.jpg"],
+  description:
+    "A simple and relaxing walk along the lakeside. Smooth paths and calm waters make it perfect for leisurely afternoon strolls."
+},
+
+{
+  category: "Walking",
+  difficulty: "intermediate",
+  name: "Countryside Walk",
+  location: "Green Fields",
+  distance: 5,
+  rating: 4.6,
+  images: ["Walking intermediate.jpg"],
+  description:
+    "A refreshing rural trail passing through open farmlands and gentle rolling terrain. Great for walkers wanting a longer route with peaceful scenery."
+},
+
+{
+  category: "Walking",
+  difficulty: "extreme",
+  name: "Forest Marathon",
+  location: "Pine Woods",
+  distance: 9,
+  rating: 4.8,
+  images: ["Walking extreme.webp"],
+  description:
+    "A long forest route requiring endurance. Expect tall pines, narrow woodland paths, and extended distances perfect for advanced walkers."
+},
+
+// Camping
+{
+  category: "Camping",
+  difficulty: "easy",
+  name: "Folk Arts Campsite",
+  location: "Kaamulan Park, Malaybalay City",
+  distance: 1,
+  rating: 4.5,
+  images: ["walking intermediate.jpg"],
+  description:
+    "A friendly and accessible campsite inside Kaamulan Park with cool weather, wide open areas, and cultural surroundings—great for first-time campers."
+},
+
+{
+  category: "Camping",
+  difficulty: "intermediate",
+  name: "Sabangan Campsite",
+  location: "Can-ayan, Malaybalay City",
+  distance: 3,
+  rating: 4.7,
+  images: ["Camping intermediate.jpg"],
+  description:
+    "A riverside campsite known for its fresh air, hanging bridges, and peaceful forest environment. Offers relaxing streams and moderate hiking routes."
+},
+
+{
+  category: "Camping",
+  difficulty: "extreme",
+  name: "PineRidge Campsite",
+  location: "PineRidge Malaybalay City, Bukidnon",
+  distance: 8,
+  rating: 4.9,
+  images: ["Camping extreme.webp"],
+  description:
+    "A high-elevation campsite deep within pine-covered terrain. The steep approach and long hike make it suitable for experienced campers seeking a remote adventure."
+}
+];
+
+
+// =============== LOGIC ==================
+
+const params = new URLSearchParams(window.location.search);
+const category = params.get('category') || "Running";
+const difficulty = params.get('difficulty') || "easy";
+
+document.getElementById('trailListTitle').textContent =
+  `${category} Trails - ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
+
+const filteredTrails = allTrails.filter(trail =>
+  trail.category === category && trail.difficulty === difficulty
+);
+
+const container = document.getElementById('trailListContainer');
+
+filteredTrails.forEach(trail => {
+
+  const card = document.createElement('div');
+  card.className = 'trail-item';
+
+  let carouselHTML = `
+    <div class="carousel-container">
+      <button class="carousel-btn prev-btn">&#10094;</button>
+      <img src="${trail.images[0]}" class="trail-img" data-index="0">
+      <button class="carousel-btn next-btn">&#10095;</button>
+    </div>
+  `;
+
+  card.innerHTML = `
+    ${carouselHTML}
+    <h3>${trail.name}</h3>
+
+    <div class="description-box">
+      ${trail.description || "No description available."}
+    </div>
+
+    <p><strong>Location:</strong> ${trail.location}</p>
+    <p><strong>Distance:</strong> ${trail.distance} km</p>
+    <p><strong>Rating:</strong> ${trail.rating} ⭐</p>
+  `;
+
+  container.appendChild(card);
+
+  const imgElement = card.querySelector(".trail-img");
+  const prevBtn = card.querySelector(".prev-btn");
+  const nextBtn = card.querySelector(".next-btn");
+
+  let currentIndex = 0;
+
+  prevBtn.onclick = () => {
+    currentIndex = (currentIndex - 1 + trail.images.length) % trail.images.length;
+    imgElement.src = trail.images[currentIndex];
+  };
+
+  nextBtn.onclick = () => {
+    currentIndex = (currentIndex + 1) % trail.images.length;
+    imgElement.src = trail.images[currentIndex];
+  };
+
+  imgElement.onclick = () => {
+    document.getElementById("imagePopup").style.display = "flex";
+    document.getElementById("popupImg").src = imgElement.src;
+  };
+});
+
+document.getElementById("popupClose").onclick = () => {
+  document.getElementById("imagePopup").style.display = "none";
+};
+</script>
+
+</body>
+</html>

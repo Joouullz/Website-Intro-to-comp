@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Bukidnon Trail Masters</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="animations.js"></script>
+</head>
+<style>
+/* Base: nature green theme */
+  :root {
+    --green-900: #072617;
+    --green-800: #0b3d2e;
+    --green-700: #1e5238;
+    --accent: #81c784;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--green-800) 0%, var(--green-700) 100%);
+    color: #ffffff;
+  }</style>
+
+<body class="contact">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">  
+    <div class="logo-left">
+      <img src="logo-btm.png" alt="Bukidnon Trail Masters Logo">
+    </div>
+
+    <nav>
+      <ul class="nav-container">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trails.html">Trails</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    
+
+  </div>
+</header>
+<main class="container" style="padding: clamp(40px,6vw,80px) 0;">
+  <h1>Contact Us</h1>
+  <p class="lead" style="max-width:800px;">Have questions or want to suggest a trail? Send us a message and we'll get back to you.</p>
+
+  <section style="margin-top:28px; max-width:900px;">
+    <form id="contactForm" action="#" method="post" style="display:grid; gap:12px;">
+      <label>
+        <span style="display:block; font-weight:600; margin-bottom:6px;">Full name</span>
+        <input type="text" name="name" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;">
+      </label>
+
+      <label>
+        <span style="display:block; font-weight:600; margin-bottom:6px;">Email</span>
+        <input type="email" name="email" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;">
+      </label>
+
+      <label>
+        <span style="display:block; font-weight:600; margin-bottom:6px;">Message</span>
+        <textarea name="message" rows="6" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
+      </label>
+
+      <div style="display:flex; gap:12px; align-items:center;">
+        <button type="submit" class="btn-secondary" style="margin-right:auto;">Send Message</button>
+        <p style="margin:0; color:var(--muted);">Or reach us at <strong>julmanghanoGWAPO123@gmail.com</strong></p>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Bukidnon Trail Masters. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// simple demo to show a submission message (no backend)
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thanks — your message has been recorded (demo).');
+  this.reset();
+});
+</script>
+
+</body>
+</html>
