@@ -27,12 +27,12 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     padding: 10px 25px;
-    border-radius: 40px;          /* Oblong shape */
+    border-radius: 40px;
     border: 1px solid rgba(255,255,255,0.25);
     display: flex;
     gap: 35px;
 }
-/* Align the nav on the right */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -55,7 +55,6 @@ header nav ul li a {
     font-weight: 600;
 }
 
-/* Left circular profile-style logo */
 .logo-left {
     display: flex;
     align-items: center;
@@ -72,11 +71,8 @@ header nav ul li a {
     background: #ffffff18;
     backdrop-filter: blur(4px);
 }
-
-
-
-
 </style>
+
 <body class="trails-list">
 
 <!-- HEADER -->
@@ -99,23 +95,21 @@ header nav ul li a {
   </div>
 </header>
 
-<!-- Trail List Section -->
 <section class="categories">
   <h2 id="trailListTitle">Trails</h2>
   <div class="trail-list" id="trailListContainer"></div>
 </section>
 
-<!-- FULLSCREEN POPUP -->
+<!-- POPUP -->
 <div id="imagePopup" class="image-popup">
   <span id="popupClose" class="popup-close">&times;</span>
   <img id="popupImg" class="popup-img" src="">
 </div>
 
 <script>
-// =============== TRAIL DATA ==================
+// ================= DATA =================
 const allTrails = [
 
-// Running
 {
   category: "Running",
   difficulty: "easy",
@@ -279,9 +273,7 @@ const allTrails = [
 }
 ];
 
-
-// =============== LOGIC ==================
-
+// ================= LOGIC =================
 const params = new URLSearchParams(window.location.search);
 const category = params.get('category') || "Running";
 const difficulty = params.get('difficulty') || "easy";
@@ -300,11 +292,10 @@ filteredTrails.forEach(trail => {
   const card = document.createElement('div');
   card.className = 'trail-item';
 
+  // REMOVED ARROWS — CLEAN IMAGE ONLY
   let carouselHTML = `
     <div class="carousel-container">
-      <button class="carousel-btn prev-btn">&#10094;</button>
       <img src="${trail.images[0]}" class="trail-img" data-index="0">
-      <button class="carousel-btn next-btn">&#10095;</button>
     </div>
   `;
 
@@ -324,21 +315,8 @@ filteredTrails.forEach(trail => {
   container.appendChild(card);
 
   const imgElement = card.querySelector(".trail-img");
-  const prevBtn = card.querySelector(".prev-btn");
-  const nextBtn = card.querySelector(".next-btn");
 
-  let currentIndex = 0;
-
-  prevBtn.onclick = () => {
-    currentIndex = (currentIndex - 1 + trail.images.length) % trail.images.length;
-    imgElement.src = trail.images[currentIndex];
-  };
-
-  nextBtn.onclick = () => {
-    currentIndex = (currentIndex + 1) % trail.images.length;
-    imgElement.src = trail.images[currentIndex];
-  };
-
+  // Image popup
   imgElement.onclick = () => {
     document.getElementById("imagePopup").style.display = "flex";
     document.getElementById("popupImg").src = imgElement.src;
